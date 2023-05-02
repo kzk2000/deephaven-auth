@@ -1,0 +1,17 @@
+.idea
+*~
+*.py[co]
+.DS_Store
+__pycache__
+*.egg
+*.eggs
+*.vscode
+*.egg-info
+eggs
+zzz_private
+*.tar
+*.mo
+*.log
+
+
+
