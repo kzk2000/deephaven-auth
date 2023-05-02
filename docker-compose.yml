@@ -10,9 +10,10 @@ services:
       JAVA_OPTS:
         -Xmx4g
         -DAuthHandlers=io.deephaven.authentication.oidc.OidcAuthenticationHandler
-        -Dauthentication.oidc.keycloak.url=http://localhost:6060
+        -Dauthentication.oidc.keycloak.url=http://keycloak:8080
         -Dauthentication.oidc.keycloak.realm=deephaven_core
         -Dauthentication.oidc.keycloak.clientId=deephaven
+        -Dauthentication.client.configuration.list=AuthHandlers,authentication.oidc.keycloak.url,authentication.oidc.keycloak.realm,authentication.oidc.keycloak.clientId
       START_OPS: -Ddeephaven.console.type=python
     ports:
       - "10000:10000"
@@ -60,7 +61,7 @@ services:
       - --db-schema keycloak
       - --import-realm
     ports:
-      - "6060:8080"
+      - "8080:8080"
     volumes:
       - ./build/deephaven_realm.json:/opt/keycloak/data/import/deephaven_realm.json:ro
     depends_on:

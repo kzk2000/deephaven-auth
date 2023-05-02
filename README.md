@@ -28,7 +28,10 @@ cd deephaven-auth
 docker-compose up -d
 ```
 As keycloak takes a while the deephaven container initially fails.
-Just wait a few seconds and rund ```docker-compose up -d``` again.
+Just wait a few seconds and run ```docker-compose up -d``` again.
+
+To test that ODIC is working, go to
+http://localhost:10000/jsapi/authentication/oidc.html
 
 
 ## Issue / not working yet:
