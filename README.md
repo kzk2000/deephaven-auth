@@ -25,16 +25,10 @@ drwxrwxr-x 6 user user    4096 May  1 21:41 ..
 cd ~
 git clone git@github.com:kzk2000/deephaven-auth.git
 cd deephaven-auth
-
-# start keycloak server 1st
-docker-compose -f docker-compose-keycloak.yml build --no-cache
-docker-compose -f docker-compose-keycloak.yml up -d
-
-# wait a few seconds, then start Deephavens server
 docker-compose build --no-cache
 docker-compose up -d
 ```
-As keycloak takes a while the deephaven container initially fails.
+As keycloak takes a while to startup the deephaven container initially fails.
 Just wait a few seconds and run ```docker-compose up -d``` again.
 
 To test that ODIC is working, go to

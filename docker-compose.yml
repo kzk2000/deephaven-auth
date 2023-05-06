@@ -19,6 +19,8 @@ services:
       - "10000:10000"
     volumes:
       - ./data/deephaven:/data/storage
+    depends_on:
+      - keycloak
 
   db:
     image: postgres:14.2
