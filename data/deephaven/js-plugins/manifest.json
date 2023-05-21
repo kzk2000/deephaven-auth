@@ -1,0 +1,6 @@
+{
+    "plugins": [
+      { "name": "table-example", "version": "0.2.0", "main": "dist/index.js" },
+      { "name": "auth-keycloak", "version": "0.2.0", "main": "dist/index.js" }
+    ]
+}
