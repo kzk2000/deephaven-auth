@@ -80,7 +80,6 @@ shouldUseNative() ? Object.assign : function(target, source) {
         }
       }
     }
-    }
   }
   return to;
 };

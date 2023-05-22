@@ -20,8 +20,8 @@ services:
     volumes:
       - ./data/deephaven:/data/storage
     depends_on:
-      - keycloak
-      #  condition: service_runninghealthy
+      keycloak:
+        condition: service_healthy
 
   db:
     image: postgres:14.2
@@ -60,6 +60,12 @@ services:
       - --db-password password
       - --db-schema keycloak
       - --import-realm
+      - --health-enabled=true
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health/ready"]
+      interval: 3s
+      timeout: 2s
+      retries: 60
     ports:
       - "8080:8080"
     volumes:
