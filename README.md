@@ -18,7 +18,7 @@ The keycloak container takes 10+ sec to come up, usually all 3 containers should
   * within the docker network, and
   * outside the docker network from your local web browser
 * Deephaven UI runs under http://localhost:10000
-  * To log in, try user/user or admin/admin to login:
+  * To log in, enter **user/user** or **admin/admin** as user/password (see [deephaven_realm.json](docker/keycloak/deephaven_realm.json))
     ![](pics/Screenshot_login.png)
     <br><br>
   * To log out, hit the little wheel in the upper right of the DH UI, and you will see the logout option:
