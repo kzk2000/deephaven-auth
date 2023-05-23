@@ -10,7 +10,7 @@ services:
       JAVA_OPTS:
         -Xmx4g
         -DAuthHandlers=io.deephaven.authentication.oidc.OidcAuthenticationHandler
-        -Dauthentication.oidc.keycloak.url=http://keycloak:8080
+        -Dauthentication.oidc.keycloak.url=http://10.222.1.10:8080
         -Dauthentication.oidc.keycloak.realm=deephaven_core
         -Dauthentication.oidc.keycloak.clientId=deephaven
         -Dauthentication.client.configuration.list=AuthHandlers,authentication.oidc.keycloak.url,authentication.oidc.keycloak.realm,authentication.oidc.keycloak.clientId
@@ -22,6 +22,8 @@ services:
     depends_on:
       keycloak:
         condition: service_healthy
+    networks:
+      - dh_auth_ntw
 
   db:
     image: postgres:14.2
@@ -37,6 +39,8 @@ services:
       - POSTGRES_PASSWORD=password
     # Specify a custom command, turning off safety features for faster LOCAL-ONLY development. Do not use this in production.
     command: postgres -c fsync=off -c synchronous_commit=off
+    networks:
+      - dh_auth_ntw
 
   keycloak:
     image: quay.io/keycloak/keycloak:19.0.1
@@ -72,3 +76,13 @@ services:
       - ./docker/keycloak/deephaven_realm.json:/opt/keycloak/data/import/deephaven_realm.json:ro
     depends_on:
       - db
+    networks:
+      dh_auth_ntw:
+        ipv4_address: 10.222.1.10  # set explicitly so the IP address works within docker network and on local host
+
+networks:
+  dh_auth_ntw:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.222.1.0/24
