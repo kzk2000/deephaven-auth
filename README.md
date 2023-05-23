@@ -29,7 +29,7 @@ The keycloak container takes 10+ sec to come up, usually all 3 containers should
 
 #### Required external .jar lib
 We need [deephaven-oidc-authentication-provider-0.24.2-all.jar](https://repo1.maven.org/maven2/io/deephaven/deephaven-oidc-authentication-provider/0.24.2/deephaven-oidc-authentication-provider-0.24.2-all.jar
-) which we directly downlaod into the Deephaven container during the build. 
+) which we directly download into the Deephaven container during the build. 
 
 #### Build from scratch (more for the interested folks who want to learn how to do it)
 ```bash
