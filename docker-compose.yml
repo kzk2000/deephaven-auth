@@ -6,7 +6,6 @@ services:
     build:
       context: docker/deephaven
     environment:
-      # if you comment out the last 5 -Dauth... lines, the 'table-example' plugins works
       JAVA_OPTS:
         -Xmx4g
         -DAuthHandlers=io.deephaven.authentication.oidc.OidcAuthenticationHandler
@@ -78,7 +77,7 @@ services:
       - db
     networks:
       dh_auth_ntw:
-        ipv4_address: 10.222.1.10  # set explicitly so the IP address works within docker network and on local host
+        ipv4_address: 10.222.1.10  # makes this IP address accessible from both docker network AND in web browser
 
 networks:
   dh_auth_ntw:
